@@ -1,0 +1,559 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: Inter, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-color: hsl(0, 0%, 10%);
+    --light-text: hsl(0, 0%, 90%);
+    --dark-text: hsl(0, 0%, 15%);
+    --color-green: hsl(155, 74%, 69%);
+    --color-red: hsl(0, 88%, 74%);
+    --color-blue: hsl(209, 73%, 68%);
+    --color-active: var(--color-green);
+    --color-grey: hsl(0, 0%, 13%);
+    --dark-text: hsla(0, 0%, 16%, 0.8);
+
+    --transition-fast: 300ms;
+    --transition-slow: 800ms;
+}
+
+a:visited { text-decoration: none; color:black; }
+a:hover { text-decoration: none; color:black; }
+a:focus { text-decoration: none; color:black; }
+a:hover, a:active { text-decoration: none; color:black }
+
+
+body {
+    height: 100vh;
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+}
+section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+}
+h1 {
+    font-size: 3em;
+}
+main > h1 {
+    color: var(--color-active);
+    text-shadow: 0 0 1rem var(--color-active);
+    transition: text-shadow var(--transition-fast) linear, color var(--transition-fast) linear;
+}
+section > h1 {
+    color: var(--bg-color);
+}
+h2 {
+    color: var(--light-text);
+    font-size: 3em;
+    border-radius: 6px;
+}
+h3 {
+    color: var(--dark-text);
+    font-size: 1.5em;
+}
+#options {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 100%;
+    min-width: 60%;
+}
+#options > h2 {
+    padding: 1rem; 
+}
+#options > h2 {
+    cursor: pointer;
+}
+#projectsContainer {
+    display: grid;
+    padding: 5rem;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    max-height: 1000px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+}
+
+.back {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    color: var(--dark-text);
+    font-size: 1.5em;
+    top: 0;
+    left: 0;
+    margin: 2rem;
+    transition: opacity var(--transition-fast) ease-out;
+}
+.back:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+
+
+.absoluteGridContainer {
+    position: relative;
+    margin: 5rem;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    max-height: 900px;
+}
+.project {
+    background-color: var(--color-green);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    border-radius: 0.5rem;
+
+    width: 47%;
+    height: 47%;
+    transition: height var(--transition-fast) ease-out, width var(--transition-fast) ease-out, transform var(--transition-fast) ease-out;
+
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+}
+.project > h3 {
+    margin: 0.2rem;
+    margin-bottom: 0.6rem;
+}
+.project:nth-child(1) {
+    top: 0;
+    left: 0;
+}
+.project:nth-child(2) {
+    top: 0;
+    right: 0;
+}
+.project:nth-child(3) {
+    bottom: 0;
+    left: 0;
+}
+.project:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}
+.project:hover {
+    width: 50%;
+    height: 50%;
+}
+.project[data-focused="true"] {
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.05);
+}
+.project[data-focused="leaving"] {
+    z-index: 99;
+}
+#skillsOuterContentContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem;
+}
+
+#skillsContainer {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    margin: 5rem 0 5rem 0;
+}
+.skill {
+    width: 6rem;
+    height: 7rem;
+    background-color: var(--color-blue);
+
+    position: absolute;
+    transition: transform var(--transition-fast) ease-out;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+    box-shadow: 1px 1px 4px black;
+
+    transform: translate(-50%, -50%);
+
+    -webkit-user-select: none;
+
+       -moz-user-select: none;
+
+        -ms-user-select: none;
+
+            user-select: none;
+}
+.skill:hover {
+    cursor:-webkit-grab;
+    cursor:grab;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+.skill:active {
+    cursor:-webkit-grabbing;
+    cursor:grabbing;
+}
+.skillLogo {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 0.5rem;
+    -o-object-fit: contain;
+       object-fit: contain;
+}
+.skill::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+.skill > figcaption {
+    color: var(--dark-text);
+}
+
+.resumeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+}
+.resumeContainer > h2 {
+    color: var(--dark-text);
+}
+
+.resumeContainer  img {
+    opacity: 100%;
+    width: 5rem;
+    margin: 1rem;
+    transition: opacity var(--transition-fast) ease-out;
+}
+.resumeContainer  img:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.projectContentContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: margin var(--transition-fast) ease-out;
+}
+.projectContentContainer > * {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.project .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all var(--transition-fast) ease-out;
+    border-radius: 4px;
+    z-index: 3;
+}
+.project .image > img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    max-height: 400px;
+    border-radius: 4px;
+}
+.project .exit {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all var(--transition-fast) ease-out;
+}
+.project .rightSideContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project .rightSideInnerContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 400px;
+}
+.project .description {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    transition: all var(--transition-fast) ease-out;
+    height: 75%;
+    width: 100%;
+    padding: 2rem;
+    justify-content: start;
+    align-items: start;
+}
+.project .links {
+    position: absolute;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    transition: all var(--transition-fast) ease-out;
+    height: 25%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.project[data-focused="true"] > .projectContentContainer {
+    margin: 1rem;
+}
+.project[data-focused="true"] .image {
+    width: 50%;
+    height: 100%;
+}
+.project[data-focused="true"] .image > img {
+    -o-object-fit: fill;
+       object-fit: fill;
+}
+.project[data-focused="true"] .exit {
+    opacity: 100%;
+}
+.project[data-focused="true"] .description {
+    opacity: 100%;
+}
+.project[data-focused="true"] .links {
+    opacity: 100%;
+}
+.project[data-focused="false"]:hover {
+    cursor: pointer;
+}
+
+.btn {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    box-shadow: 0 0 4px black;
+    transition: background-color var(--transition-fast) ease-out;
+    text-decoration: none;
+    color: black;
+}
+.btn:hover {
+    cursor:pointer;
+    background-color: hsl(155, 100%, 76%);
+}
+
+.closeProjectButton {
+    font-size: 1em;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    transition: color var(--transition-fast) ease-out;
+}
+.closeProjectButton:hover {
+    cursor:pointer;
+    color: hsl(155, 46%, 29%)
+}
+
+.circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: calc(var(--skills-circle-radius) * 2);
+    width: calc(var(--skills-circle-radius) * 2);
+    transform: translateX(-50%);
+}
+.circle > circle {
+    stroke: var(--dark-text);
+}
+
+.circleArrow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: calc(var(--skills-circle-radius) * 2);
+    width: calc(var(--skills-circle-radius) * 2);
+    transform: translateX(-50%);
+}
+.circleArrow > .path1 {
+    stroke: var(--dark-text);
+}
+.circleArrow > .path2 {
+    fill: var(--dark-text);
+}
+
+#ContactHeader {
+    transition: all var(--transition-fast) ease-out;
+}
+#matrix-content {
+    background-color: var(--color-red);
+    position: absolute;
+    transition: -webkit-clip-path var(--transition-fast) ease-out;
+    transition: clip-path var(--transition-fast) ease-out;
+    transition: clip-path var(--transition-fast) ease-out, -webkit-clip-path var(--transition-fast) ease-out;
+    border-radius: 4px;
+    -webkit-clip-path: polygon(0 0, 0 0, 100% 0, 100% 0);
+            clip-path: polygon(0 0, 0 0, 100% 0, 100% 0);
+
+    display: flex;
+    justify-content: center;
+
+}
+#matrix-content[data-visible="true"] {
+    -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+            clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+}
+#matrix-content > .exit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all var(--transition-fast) ease-out;
+}
+#matrix-content > form {
+    height: 100%;
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#matrix-content > form > * {
+    padding: 1rem;
+    margin: 1rem;
+}
+#matrix-content label {
+    padding: 0;
+    margin-bottom: 0;
+    color: var(--dark-text);
+}
+#matrix-content input {
+    background-color: var(--bg-color);
+    box-shadow: 2px 2px 4px black;
+    border: none;
+    border-radius: 4px;
+    color:var(--light-text);
+}
+#matrix-content textarea {
+    background-color: var(--bg-color);
+    resize: none;
+    border:none;
+    box-shadow: 2px 2px 4px black;
+    border-radius: 4px;
+    color:var(--light-text);
+}
+#matrix-content input:focus {
+    outline: 2px hsl(0, 38%, 50%) solid;
+}
+#matrix-content textarea:focus {
+    outline: 2px hsl(0, 38%, 50%) solid;
+}
+#matrix-content .inputSubmit {
+    background-color: transparent;
+    border: none;
+    box-shadow: 2px 2px 4px black;
+    color: black;
+    transition: background-color var(--transition-fast) ease-out;
+}
+#matrix-content .inputSubmit:hover {
+    background-color: hsl(0, 48%, 60%);
+    cursor: pointer;
+}
+.closeMatrixButton {
+    font-size: 1em;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    transition: color var(--transition-fast) ease-out;
+}
+.closeMatrixButton:hover {
+    cursor:pointer;
+    opacity: 70%;
+}
+
+
+#mainLinks {
+    position: absolute;
+    z-index: 1000;
+    bottom: 0;
+    right: 0;
+    margin: 4rem;
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+#mainLinks a {
+    width: 3rem;
+    height: 3rem;
+    margin: 0.4rem;
+}
+#mainLinks img {
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px black;
+    -o-object-fit: fill;
+       object-fit: fill;
+    background-color: transparent;
+    transition: background-color var(--transition-fast) ease-out;
+}
+#mainLinks img:hover {
+    background-color: hsla(0, 0%, 100%, 0.2)
+}
+.exit {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.resumeContainer a {
+    padding: 0;
+    margin: 0;
+}

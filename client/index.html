@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="main.css" rel="stylesheet">
+    <link href="growingUnderline.css" rel="stylesheet">
+    <link href="iExpanding.css" rel="stylesheet">
+    <script src="main.js" defer="true"></script>
+    <script src="growingUnderline.js" defer="true"></script>
+    <script src="iExpanding.js" defer="true"></script>
+    <script src="matrix.js" defer="true"></script>
+    <script src="email.js" defer="true"></script>
+
+    <link rel="icon" href="./img/favicon.ico">
+    <title>Joseph West Portfolio</title>
+</head>
+
+<body>
+    <main>
+        <p></p>
+        <h1>Joseph West</h1>
+        <div id="options">
+            <h2 onclick="activateGrowingContent()" onmouseleave="unPeekUnderline()" id="projectHeader" onmouseover="changeActiveColor('green'); peekUnderline();">Projects</h2>
+            <h2 onmouseleave="unPeekIExpansion()" onclick="activateIExpansion()" id="skillsHeader" onmouseover="changeActiveColor('blue'); peekIExpansion();">Sk<span id="expanding-i">i</span>lls</h2>
+            <h2 onclick="beginMatrix()" id="ContactHeader" onmouseover="peekMatrix(); changeActiveColor('red');" onmouseleave="unPeekMatrix()">Contact</h2>
+        </div>
+        <div id="mainLinks">
+            <a target="_blank" href="https://github.com/Jwest11">
+                <img src="./img/linkIcons/githubLogo.png" alt="Github">
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/joseph-west-500a90164/">
+                <img src="./img/linkIcons/linkedInLogo.png" alt="LinkedIn">
+            </a>
+            <a target="_blank" href="mailto: JoeyWest1414@gmail.com">
+                <img src="./img/linkIcons/emailLogo.png" alt="Email">
+            </a>
+            <a target="_blank" href="https://leetcode.com/joeywest1414/">
+                <img src="./img/linkIcons/leetcode.png" alt="LeetCode">
+            </a>
+        </div>
+    
+    </main>
+    
+    <section data-transition="instant" id="growing-content">
+        <button onclick="deactivateGrowingContent()" class="back">Back</button>
+        <div class="absoluteGridContainer">
+            <div data-focused="false" onclick="focusProject('project1')" id="project1" class="project">
+                <h3>C++ Rasterizer</h3>
+                <div class="exit"><button class="closeProjectButton" onclick="deFocusProject('project1')">X</button></div>
+                <div class="projectContentContainer">
+                    <div class="image">
+                        <img src="./img/projects/rasterizerThumbnail.png" alt="Rasterizer Image">
+                    </div>
+                    <div class="rightSideContainer">
+                        <div class="rightSideInnerContainer">
+                            <div class="description">
+                                <p>A C++ rasterizer implemented using solely a cross platform windowing API (SDL). In short, the program transforms triangles specified by 3 coordinates into visible triangles on the screen relative to the location of the user controlled camera.</p>
+                            </div>
+                            <div class="links">
+                                <a target="_blank" href="https://github.com/JWest11/Rasterizer" class="btn">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-focused="false" onclick="focusProject('project2')" id="project2" class="project">
+                <h3>Chess Online</h3>
+                <div class="exit"><button class="closeProjectButton" onclick="deFocusProject('project2')">X</button></div>
+                <div class="projectContentContainer">
+                    <div class="image">
+                        <img src="./img/projects/ChessOnlineThumbnail.png" alt="Chess Online Image">
+                    </div>
+                    <div class="rightSideContainer">
+                        <div class="rightSideInnerContainer">
+                            <div class="description">
+                                <p>An online chess website built with C#, ASP.NET Core Blazor, and implementing SignalR websocket communications. The site works by a user first creating their name, then creating a game (with a specified time control). A link is then created that you can send to another player which allows them to join the game.</p>
+                            </div>
+                            <div class="links">
+                                <a target="_blank" href="http://blazorserverchess.jwest11.com/" class="btn">Live</a>
+                                <a target="_blank" href="https://github.com/JWest11/BlazorServerChess" class="btn">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-focused="false" onclick="focusProject('project3')" id="project3" class="project">
+                <h3>Bug Tracker</h3>
+                <div class="exit"><button class="closeProjectButton" onclick="deFocusProject('project3')">X</button></div>
+                <div class="projectContentContainer">
+                    <div class="image">
+                        <img src="./img/projects/BugTrackerThumbnail.png" alt="Bug Tracker Image">
+                    </div>
+                    <div class="rightSideContainer">
+                        <div class="rightSideInnerContainer">
+                            <div class="description">
+                                <p>A bug tracker built with Python and the Flask web framework. Includes basic CRUD operations, file uploading, authentication, roles, and a relational data structure.</p>
+                            </div>
+                            <div class="links">
+                                <a target="_blank" href="http://bugtracker.jwest11.com/" class="btn">Live</a>
+                                <a target="_blank" href="https://github.com/JWest11/BugTracker" class="btn">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-focused="false" onclick="focusProject('project4')" id="project4" class="project">
+                <h3>Chemical SDS</h3>
+                <div class="exit"><button class="closeProjectButton" onclick="deFocusProject('project4')">X</button></div>
+                <div class="projectContentContainer">
+                    <div class="image">
+                        <img src="./img/projects/chemicalSDSThumbnail.png" alt="Chemical SDS Image">
+                    </div>
+                    <div class="rightSideContainer">
+                        <div class="rightSideInnerContainer">
+                            <div class="description">
+                                <p>A React, NextJS website that querries and displays SDS information on a chemical. Info is retrieved from the PubChem public API, and the openai GPT3.5 turbo API is querried to ask for safety information about the chemical specified.</p>
+                            </div>
+                            <div class="links">
+                                <a target="_blank" href="http://quickchem.jwest11.com/" class="btn">Live</a>
+                                <a target="_blank" href="https://github.com/JWest11/QuickChem" class="btn">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="tempUnderline"></div>
+    <section data-transition="false" data-visible="false" id="expanded-content">
+        <button onclick="deactivateIExpansion()" class="back">Back</button>
+        <div id="skillsOuterContentContainer">
+            <div id="skillsContainer">
+                <svg class="circle" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="49.5" stroke="black"/>
+                    </svg>
+                <svg class="circleArrow" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="path1" d="M87 49.5C87 44.5754 86.03 39.6991 84.1455 35.1494C82.2609 30.5997 79.4987 26.4657 76.0165 22.9835C72.5343 19.5013 68.4003 16.7391 63.8506 14.8545C59.3009 12.97 54.4246 12 49.5 12"/>
+                    <path class="path2" d="M86.6464 51.3536C86.8417 51.5488 87.1583 51.5488 87.3536 51.3536L90.5355 48.1716C90.7308 47.9763 90.7308 47.6597 90.5355 47.4645C90.3403 47.2692 90.0237 47.2692 89.8284 47.4645L87 50.2929L84.1716 47.4645C83.9763 47.2692 83.6597 47.2692 83.4645 47.4645C83.2692 47.6597 83.2692 47.9763 83.4645 48.1716L86.6464 51.3536ZM86.5 49V51H87.5V49H86.5Z"/>
+                    <path class="path2" d="M48.6464 11.6464C48.4512 11.8417 48.4512 12.1583 48.6464 12.3536L51.8284 15.5355C52.0237 15.7308 52.3403 15.7308 52.5355 15.5355C52.7308 15.3403 52.7308 15.0237 52.5355 14.8284L49.7071 12L52.5355 9.17157C52.7308 8.97631 52.7308 8.65973 52.5355 8.46447C52.3403 8.2692 52.0237 8.2692 51.8284 8.46447L48.6464 11.6464ZM50 11.5H49V12.5H50V11.5Z"/>
+                    </svg>
+                        
+                        
+                        
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/cppLogo.png" alt="C++">
+                    <figcaption>C++</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/unrealLogo.png" alt="Unreal Engine">
+                    <figcaption>Unreal</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/csLogo.png" alt="C Sharp">
+                    <figcaption>C#</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/netLogo.png" alt="ASP.NET">
+                    <figcaption>ASP.NET</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/htmlLogo2.png" alt="HTML">
+                    <figcaption>HTML</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/cssLogo.jpg" alt="CSS">
+                    <figcaption>CSS</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/javascriptLogo.png" alt="Javascript">
+                    <figcaption>Javascript</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/reactLogo.png" alt="React">
+                    <figcaption>React</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/sqlLogo.png" alt="SQL">
+                    <figcaption>SQL</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/gitLogo.png" alt="Git">
+                    <figcaption>Git</figcaption>
+                </div>
+                <div class="skill">
+                    <img class="skillLogo" src="./img/skills/pythonLogo.png" alt="Python">
+                    <figcaption>Python</figcaption>
+                </div>
+            </div>
+            <div class="resumeContainer">
+                <h2>Resume</h2>
+                <a target="_blank" href="./ResumeJW.pdf">
+                    <img src="./img/misc/resumeLogo.png" alt="Resume">
+                </a>
+            </div>
+        </div>
+    </section>
+    <div id="matrix-content">
+        <button class="closeMatrixButton exit" onclick="hideMatrix();">X</button>
+        <form id="ContactForm">
+            <label for="emailInput">Email</label>
+            <input type="text" id="emailInput" name="emailInput" required>
+            <label for="subjectInput">Subject</label>
+            <input type="text" id="subjectInput" name="subjectInput" required>
+            <label for="messageInput">Message</label>
+            <textarea name="messageInput" id="messageInput" cols="30" rows="10" required></textarea>
+            <input class="inputSubmit" type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+:root {
+    --dot-x-offset: -100px;
+    --dot-y-offset: -100px;
+}
+
+#expanded-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-blue);
+    width: 100%;
+    height: 100vh;
+    -webkit-clip-path: circle(0 at var(--dot-x-offset) var(--dot-y-offset));
+            clip-path: circle(0 at var(--dot-x-offset) var(--dot-y-offset));
+    pointer-events: none;
+    
+}
+#expanded-content[data-transition="slow"] {
+    transition: -webkit-clip-path var(--transition-slow) linear;
+    transition: clip-path var(--transition-slow) linear;
+    transition: clip-path var(--transition-slow) linear, -webkit-clip-path var(--transition-slow) linear;
+}
+#expanded-content[data-transition="fast"] {
+    transition: -webkit-clip-path var(--transition-fast) ease-out;
+    transition: clip-path var(--transition-fast) ease-out;
+    transition: clip-path var(--transition-fast) ease-out, -webkit-clip-path var(--transition-fast) ease-out;
+}
+#expanded-content[data-peek="true"] {
+    -webkit-clip-path: circle(1rem at var(--dot-x-offset) var(--dot-y-offset));
+            clip-path: circle(1rem at var(--dot-x-offset) var(--dot-y-offset));
+}
+#expanded-content[data-visible="true"] {
+    -webkit-clip-path: circle(calc(var(--circle-scale)) at var(--dot-x-offset) var(--dot-y-offset));
+            clip-path: circle(calc(var(--circle-scale)) at var(--dot-x-offset) var(--dot-y-offset));
+    pointer-events: auto;
+}
